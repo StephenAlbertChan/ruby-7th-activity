@@ -1,22 +1,34 @@
-puts "input a number"
-num = gets.to_i
+module Compute
+    def is_perfect_square
+        getRoot = @num/2
 
-    getRoot = num/2
-
-    if(num >= 0)
-        for i in 0..getRoot
-            if((i*i) == num)
-                text = "#{num} => True"
-                break
-            elseif((i*i)>num)
-                text = "#{num} => False"
-                break
-            else
-                text = "#{num} => False"
+        if(@num >= 0)
+            for i in 0..getRoot
+                if((i*i) == @num)
+                    text = "true"
+                    break
+                elseif((i*i)>@num)
+                    text = "false"
+                    break
+                else
+                    text = "false"
+                end
             end
+        else
+            text = "false"
         end
-    else
-        text = "#{num} => False"
+
+        puts text
+    end
+end
+
+class Input
+    def initialize(num)
+        @num = num
     end
 
-puts text
+   include Compute
+end
+
+input = Input.new(100)
+input.is_perfect_square
